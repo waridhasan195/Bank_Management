@@ -8,15 +8,13 @@ import java.util.jar.JarEntry;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import com.
 
 public class SignupOne extends JFrame {
 
     SignupOne(){
 
         setLayout(null);
-
-
-
 
 // APPLICATION FORM
         JLabel FormName = new JLabel("APPLICATION FORM");
@@ -63,6 +61,9 @@ public class SignupOne extends JFrame {
         Date_of_Birth.setBounds(50, 200, 150, 20);
         Date_of_Birth.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Date_of_Birth);
+
+
+        JDateChooser JDate = new JDateChooser();
 
         JTextField Date_of_Birth_Field = new JTextField();
         Date_of_Birth_Field.setBounds(200, 200, 150, 20);
