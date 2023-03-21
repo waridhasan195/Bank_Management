@@ -2,16 +2,21 @@ package Bank_Management;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class Login extends JFrame{
+public class Login extends JFrame implements ActionListener{
 
+    JButton SignInButton, ClearButton, SignUPButton;
+    JTextField cardTextField;
+    JPasswordField pinTextField;
     Login(){
         setTitle("Sky Banking");
         setLayout(null);
@@ -33,7 +38,7 @@ public class Login extends JFrame{
         Card_Number_Text.setBounds(180, 85, 700, 40);
         add(Card_Number_Text);
 
-        JTextField cardTextField = new JTextField();
+        cardTextField = new JTextField();
         cardTextField.setBounds(330, 95, 200, 25);
         add(cardTextField);
 
@@ -44,44 +49,32 @@ public class Login extends JFrame{
 
         Color Orange_color = new Color(255, 51, 0);
 
-        JTextField pinTextField = new JTextField();
+        pinTextField = new JPasswordField();
         pinTextField.setBounds(330, 130, 200, 25);
         add(pinTextField);
 
-        JButton SignIn = new JButton("SIGN IN");
-        SignIn.setBounds(290, 230, 110, 30);
-        SignIn.setFont(new Font("Osward", Font.BOLD, 15));
-        SignIn.setBackground(Color.blue);
-        SignIn.setForeground(Color.white);
-        add(SignIn);
+        SignInButton = new JButton("SIGN IN");
+        SignInButton.setBounds(290, 230, 110, 30);
+        SignInButton.setFont(new Font("Osward", Font.BOLD, 15));
+        SignInButton.setBackground(Color.blue);
+        SignInButton.setForeground(Color.white);
+        SignInButton.addActionListener(this);
+        add(SignInButton);
 
-        JButton CleareField = new JButton("CLEAR");
-        CleareField.setBounds(420, 230, 90, 30);
-        CleareField.setBackground(Color.GRAY);
-        CleareField.setForeground(Color.WHITE);
-        add(CleareField);
+        ClearButton = new JButton("CLEAR");
+        ClearButton.setBounds(420, 230, 90, 30);
+        ClearButton.setBackground(Color.GRAY);
+        ClearButton.setForeground(Color.WHITE);
+        ClearButton.addActionListener(this);
+        add(ClearButton);
 
-        JButton SignUPButton = new JButton("SIGN UP");
+        SignUPButton = new JButton("SIGN UP");
         SignUPButton.setBounds(300, 300, 190, 30);
         SignUPButton.setBackground(Orange_color);
         SignUPButton.setFont(new Font("Osward", Font.BOLD, 18));
         SignUPButton.setForeground(Color.white);
+        SignUPButton.addActionListener(this);
         add(SignUPButton);
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
 
         getContentPane().setBackground(Color.WHITE);
         setSize(800, 400);
@@ -89,6 +82,23 @@ public class Login extends JFrame{
         setLocation(350, 200);
  
     }
+
+    public void actionPerformed(ActionEvent e){
+        if (e.getSource() == ClearButton){
+            cardTextField.setText(null);
+            pinTextField.setText(null);
+
+        }
+        else if(e.getSource() == SignInButton){
+
+        }
+        else if(e.getSource() == SignUPButton){
+
+        }
+    }
+
+
+
     public static void main(String[] args) {
         System.out.println("Hello World");
         new Login();
