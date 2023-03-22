@@ -5,10 +5,13 @@ import java.awt.Font;
 import java.util.Random;
 import java.util.jar.JarEntry;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import com.
+import com.toedter.calendar.JDateChooser;
 
 public class SignupOne extends JFrame {
 
@@ -62,25 +65,34 @@ public class SignupOne extends JFrame {
         Date_of_Birth.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Date_of_Birth);
 
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setBounds(200, 200, 200, 25);
+        dateChooser.setForeground(Color.red);
+        add(dateChooser);
 
-        JDateChooser JDate = new JDateChooser();
-
-        JTextField Date_of_Birth_Field = new JTextField();
-        Date_of_Birth_Field.setBounds(200, 200, 150, 20);
-        Date_of_Birth_Field.setBackground(Color.white);
-        add(Date_of_Birth_Field);       
+   
 
 // Gender
         JLabel Gender = new JLabel("Gender: ");
         Gender.setBounds(50, 250, 150, 20);
         Gender.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Gender);
-        
-        JTextField Gender_Field = new JTextField();
-        Gender_Field.setBounds(200, 250, 150, 20);
-        Gender_Field.setBackground(Color.white);
-        add(Gender_Field); 
 
+        JRadioButton male = new JRadioButton("Male");
+        male.setBounds(200, 250, 70, 20);
+        male.setBackground(Color.white);
+        add(male);
+
+        JRadioButton female = new JRadioButton("Female");
+        female.setBounds(270, 250, 100, 20);
+        female.setBackground(Color.white);
+        add(female);
+
+        ButtonGroup male_and_female = new ButtonGroup();
+        male_and_female.add(male);
+        male_and_female.add(female);
+
+        
 
 // Email        
         JLabel Email = new JLabel("Email: ");
@@ -98,11 +110,27 @@ public class SignupOne extends JFrame {
         Marital_Status.setBounds(50, 350, 150, 20);
         Marital_Status.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Marital_Status);
+
+
+        JRadioButton married = new JRadioButton("Married");
+        married.setBounds(200, 350, 100, 20);
+        married.setBackground(Color.white);
+        add(married);
+
+        JRadioButton Unmarried = new JRadioButton("UnMarried");
+        Unmarried.setBounds(300, 350, 100, 20);
+        Unmarried.setBackground(Color.white);
+        add(Unmarried);
         
-        JTextField Marital_Statu_Field = new JTextField();
-        Marital_Statu_Field.setBounds(200, 350, 150, 20);
-        Marital_Statu_Field.setBackground(Color.white);
-        add(Marital_Statu_Field);         
+        JRadioButton Others = new JRadioButton("Others");
+        Others.setBounds(400, 350, 100, 20);
+        Others.setBackground(Color.white);
+        add(Others);
+        
+        ButtonGroup marital_Status = new ButtonGroup();
+        marital_Status.add(married);         
+        marital_Status.add(Unmarried);         
+        marital_Status.add(Others);         
 
 
 // Address
@@ -148,8 +176,14 @@ public class SignupOne extends JFrame {
         JTextField Pin_Code_Field = new JTextField();
         Pin_Code_Field.setBounds(200, 550, 150, 20);
         Pin_Code_Field.setBackground(Color.white);
-        add(Pin_Code_Field);        
-
+        add(Pin_Code_Field);
+        
+        JButton Signup_Registration_Button = new JButton("SignUP");
+        Signup_Registration_Button.setBackground(new Color(0, 225, 157));
+        Signup_Registration_Button.setForeground(Color.black);
+        Signup_Registration_Button.setFont(new Font("Osward", Font.BOLD, 20));
+        Signup_Registration_Button.setBounds(200, 600, 200, 40);
+        add(Signup_Registration_Button);
 
 
 
