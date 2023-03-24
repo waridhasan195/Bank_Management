@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.util.EventListener;
 import java.util.Random;
 import java.util.jar.JarEntry;
@@ -250,7 +251,11 @@ public class SignupOne extends JFrame implements ActionListener{
                 try {
                         if (name.equals("")){
                                 JOptionPane.showMessageDialog(null, "Name Must Requred");
-
+                        }
+                        else{
+                                Connetctiondb c = new Connetctiondb();
+                                String query = "insert into signup values('"+formNumber+"', '"+name+"', '"+fathers_name+"', '"+date_of_birth+"', '"+gender+"', '"+emial+"', '"+marid_Status+"', '"+address+"', '"+city+"', '"+pin+"', '"+state+"')";
+                                c.s.executeUpdate(query);
                         }
                         
                 } catch (Exception ee) {

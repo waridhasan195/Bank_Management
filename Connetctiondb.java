@@ -1,15 +1,15 @@
 package Bank_Management;
 import java.sql.*;
 
-public class Connetction {
+public class Connetctiondb {
 
     Connection c;
     Statement s;
     
-    public Connetction(){
+    public Connetctiondb(){
         try{
             // Class.forName(com.mysql.cj.jdbc.Driver);
-            c = DriverManager.getConnection("jbdc:mysql:///bankmanagementsystem", "root", "01735");
+            c = DriverManager.getConnection("jdbc:mysql:///bankmanagementsystem", "root", "01735");
             s = c.createStatement();
             
         }
