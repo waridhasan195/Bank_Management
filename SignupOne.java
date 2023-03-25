@@ -21,7 +21,7 @@ import com.toedter.calendar.JDateChooser;
 
 public class SignupOne extends JFrame implements ActionListener{
 
-     long randomFormNumber;
+     long randomNumber;
      JTextField Name_Field, Fathers_Name_Field, Email_Field, Address_Field, City_Field, State_Field, Pin_Code_Field;
 
 
@@ -42,8 +42,8 @@ public class SignupOne extends JFrame implements ActionListener{
 
 // Serial Number
         Random randomFormNumber = new Random();
-        long randomNumber = Math.abs((randomFormNumber.nextLong() % 9000L) + 1000L);
-        System.out.println(randomNumber);
+        randomNumber = Math.abs((randomFormNumber.nextLong() % 9000L) + 1000L);
+        System.out.println("randomNumber: "+randomNumber);
 
         JLabel Form_No = new JLabel("Serial Number: " + randomNumber);
         Form_No.setBounds(500, 50, 200, 30);
@@ -214,7 +214,8 @@ public class SignupOne extends JFrame implements ActionListener{
 
         public void actionPerformed(ActionEvent e){
 
-                String formNumber = "" + randomFormNumber;
+                String formNumber = ""+randomNumber;
+                System.out.println("Form Number: "+formNumber);
                 String name = Name_Field.getText();
                 String fathers_name = Fathers_Name_Field.getText();
                 String date_of_birth = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
