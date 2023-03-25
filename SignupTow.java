@@ -22,10 +22,11 @@ public class SignupTow extends JFrame implements ActionListener{
      JTextField Name_Field, Fathers_Name_Field, Email_Field, Address_Field, City_Field, State_Field, Pin_Code_Field;
 
 
-     JRadioButton male, female, married, Unmarried, Others;
+     JRadioButton Senior_Citizen_yes, Senior_Citizen_no, Existing_Account_yes, Existing_Account_no;
      JDateChooser dateChooser;
-     JButton Signup_Registration_Button; 
-     JComboBox religion_combo, category_combo;
+     JButton Signup_Registration_Button;
+ButtonGroup Existing_Account_Group;
+     JComboBox religion_combo, category_combo, Income_combo, Education_combo, Occupation_combo;
      SignupTow(){
 
         setLayout(null);
@@ -59,10 +60,10 @@ public class SignupTow extends JFrame implements ActionListener{
         add(religion_combo);
 
 // Category
-        JLabel Fathers_Name = new JLabel("Category: ");
-        Fathers_Name.setBounds(50, 180, 150, 20);
-        Fathers_Name.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Fathers_Name);
+        JLabel Category = new JLabel("Category: ");
+        Category.setBounds(50, 180, 150, 20);
+        Category.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Category);
 
         String category_value[] = {"General", "OBC", "SC", "ST", "Others"};
         category_combo = new JComboBox<>(category_value);
@@ -71,77 +72,67 @@ public class SignupTow extends JFrame implements ActionListener{
         add(category_combo);
 
 // Income
-        JLabel Date_of_Birth = new JLabel("Income: ");
-        Date_of_Birth.setBounds(50, 230, 150, 20);
-        Date_of_Birth.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Date_of_Birth);
+        JLabel Income = new JLabel("Income: ");
+        Income.setBounds(50, 230, 150, 20);
+        Income.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Income);
 
-        dateChooser = new JDateChooser();
-        dateChooser.setBounds(200, 230, 200, 25);
-        dateChooser.setForeground(Color.red);
-        add(dateChooser);
+        String Income_Value[] = {"Null", "<1,50,000", "< 2,50,0000", "< 5,00,000", "UpTo 10,00,000"};
+        Income_combo = new JComboBox<>(Income_Value); 
+        Income_combo.setBounds(200, 230, 200, 25);
+        Income_combo.setBackground(Color.WHITE);
+        add(Income_combo);
 
    
 
-// Gender
-        JLabel Gender = new JLabel("Last Education ");
-        Gender.setBounds(50, 280, 150, 20);
-        Gender.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Gender);
+// Education
+        JLabel Education = new JLabel("Education ");
+        Education.setBounds(50, 280, 150, 20);
+        Education.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Education);
 
-        male = new JRadioButton("Male");
-        male.setBounds(200, 280, 70, 20);
-        male.setBackground(Color.white);
-        add(male);
+        String Education_Value[] = {"Non - Graduate", "Graduate", "POST Graduate", "Doctrate", "Doctor", "Others"};
+        Education_combo = new JComboBox<>(Education_Value); 
+        Education_combo.setBounds(200, 280, 200, 20);
+        Education_combo.setBackground(Color.white);
+        add(Education_combo);
 
-        female = new JRadioButton("Female");
-        female.setBounds(270, 280, 100, 20);
-        female.setBackground(Color.white);
-        add(female);
 
-        ButtonGroup male_and_female = new ButtonGroup();
-        male_and_female.add(male);
-        male_and_female.add(female);
 
+// Occupation        
+        JLabel Occupation = new JLabel("Occupation: ");
+        Occupation.setBounds(50, 330, 150, 20);
+        Occupation.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Occupation);
         
-
-// Email        
-        JLabel Email = new JLabel("Qualification: ");
-        Email.setBounds(50, 330, 150, 20);
-        Email.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Email);
-        
-        Email_Field = new JTextField();
-        Email_Field.setBounds(200, 330, 150, 20);
-        Email_Field.setBackground(Color.white);
-        add(Email_Field);        
+        String Occupation_Value[] = {"Soldier", "Self Employed", "Bussiness", "Student", "Retired", "Others"};
+        Occupation_combo = new JComboBox<>(Occupation_Value);
+        Occupation_combo.setBounds(200, 330, 150, 20);
+        Occupation_combo.setBackground(Color.white);
+        add(Occupation_combo);        
 
 // Marital Status
-        JLabel Marital_Status = new JLabel("Occupation: ");
-        Marital_Status.setBounds(50, 380, 150, 20);
-        Marital_Status.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Marital_Status);
+        JLabel Senior_Citizen = new JLabel("Senior Citizen: ");
+        Senior_Citizen.setBounds(50, 380, 150, 20);
+        Senior_Citizen.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Senior_Citizen);
 
 
-        married = new JRadioButton("Married");
-        married.setBounds(200, 380, 100, 20);
-        married.setBackground(Color.white);
-        add(married);
+        Senior_Citizen_yes = new JRadioButton("Yes");
+        Senior_Citizen_yes.setBounds(200, 380, 100, 20);
+        Senior_Citizen_yes.setBackground(Color.white);
+        add(Senior_Citizen_yes);
 
-        Unmarried = new JRadioButton("UnMarried");
-        Unmarried.setBounds(300, 380, 100, 20);
-        Unmarried.setBackground(Color.white);
-        add(Unmarried);
+        Senior_Citizen_no = new JRadioButton("No");
+        Senior_Citizen_no.setBounds(300, 380, 100, 20);
+        Senior_Citizen_no.setBackground(Color.white);
+        add(Senior_Citizen_no);
         
-        Others = new JRadioButton("Others: ");
-        Others.setBounds(400, 380, 100, 20);
-        Others.setBackground(Color.white);
-        add(Others);
         
-        ButtonGroup marital_Status = new ButtonGroup();
-        marital_Status.add(married);         
-        marital_Status.add(Unmarried);         
-        marital_Status.add(Others);         
+        ButtonGroup Senior_Citizen_radio_Group = new ButtonGroup();
+        Senior_Citizen_radio_Group.add(Senior_Citizen_yes);         
+        Senior_Citizen_radio_Group.add(Senior_Citizen_no);         
+        
 
 
 // Address
@@ -167,27 +158,37 @@ public class SignupTow extends JFrame implements ActionListener{
         City_Field.setBackground(Color.white);
         add(City_Field);  
 
-// State
-        JLabel State = new JLabel("Senior Citizen: ");
-        State.setBounds(50, 530, 150, 20);
-        State.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(State);
+// Existing_Account
+        JLabel Existing_Account = new JLabel("Existing Account: ");
+        Existing_Account.setBounds(50, 530, 150, 20);
+        Existing_Account.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Existing_Account);
         
-        State_Field = new JTextField();
-        State_Field.setBounds(200, 530, 150, 20);
-        State_Field.setBackground(Color.white);
-        add(State_Field);
+        Existing_Account_yes = new JRadioButton("Yes");
+        Existing_Account_yes.setBounds(200, 530, 50, 20);
+        Existing_Account_yes.setBackground(Color.white);
+        add(Existing_Account_yes);
 
-// Pin Code
-        JLabel Pin_Code = new JLabel("Existing Account: ");
-        Pin_Code.setBounds(50, 580, 150, 20);
-        Pin_Code.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Pin_Code);
+        Existing_Account_no = new JRadioButton("No");
+        Existing_Account_no.setBounds(280, 530, 50, 20);
+        Existing_Account_no.setBackground(Color.white);
+        add(Existing_Account_no);
+
+        Existing_Account_Group = new ButtonGroup();
+        Existing_Account_Group.add(Existing_Account_yes);
+        Existing_Account_Group.add(Existing_Account_no);
+
+
+// // Pin Code
+//         JLabel Pin_Code = new JLabel("Existing Account: ");
+//         Pin_Code.setBounds(50, 580, 150, 20);
+//         Pin_Code.setFont(new Font("Raleway", Font.BOLD, 15));
+//         add(Pin_Code);
         
-        Pin_Code_Field = new JTextField();
-        Pin_Code_Field.setBounds(200, 580, 150, 20);
-        Pin_Code_Field.setBackground(Color.white);
-        add(Pin_Code_Field);
+//         Pin_Code_Field = new JTextField();
+//         Pin_Code_Field.setBounds(200, 580, 150, 20);
+//         Pin_Code_Field.setBackground(Color.white);
+//         add(Pin_Code_Field);
         
         Signup_Registration_Button = new JButton("NEXT");
         Signup_Registration_Button.setBackground(new Color(0, 225, 190));
