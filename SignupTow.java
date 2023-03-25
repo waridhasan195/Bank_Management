@@ -60,10 +60,10 @@ ButtonGroup Existing_Account_Group;
         add(religion_combo);
 
 // Category
-        JLabel Category = new JLabel("Category: ");
-        Category.setBounds(50, 180, 150, 20);
-        Category.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Category);
+        JLabel Category_text = new JLabel("Category: ");
+        Category_text.setBounds(50, 180, 150, 20);
+        Category_text.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Category_text);
 
         String category_value[] = {"General", "OBC", "SC", "ST", "Others"};
         category_combo = new JComboBox<>(category_value);
@@ -212,33 +212,31 @@ ButtonGroup Existing_Account_Group;
 
         public void actionPerformed(ActionEvent e){
 
-                String name = Name_Field.getText();
-                String fathers_name = Fathers_Name_Field.getText();
+                String Religion = (String) religion_combo.getSelectedItem();
+                String category = (String) category_combo.getSelectedItem();
                 String date_of_birth = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
 
-                String gender = null;
+                String Senior_Citizen_valu = null;
 
-                if (male.isSelected()){
-                        gender = "Male";
+                if (Senior_Citizen_yes.isSelected()){
+                        Senior_Citizen_valu = "Yes";
                 }
-                else if (female.isSelected()){
-                        gender = "Female";
+                else if (Senior_Citizen_no.isSelected()){
+                        Senior_Citizen_valu = "No";
                 }
 
 
                 String emial = Email_Field.getText();
 
-                String marid_Status = null;
+                String Existing_Account_value = null;
 
-                if (married.isSelected()){
-                        marid_Status = "Married";
+                if (Existing_Account_yes.isSelected()){
+                        Existing_Account_value = "Yes";
                 }
-                else if (Unmarried.isSelected()){
-                        marid_Status = "Unmarried";
+                else if (Existing_Account_no.isSelected()){
+                        Existing_Account_value = "No";
                 }
-                else if (Others.isSelected()){
-                        marid_Status = "Others";
-                }
+    
 
                 String address = Address_Field.getText();
                 String city = City_Field.getText();
