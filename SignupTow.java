@@ -4,22 +4,17 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.font.TextAttribute;
-import java.sql.Connection;
-import java.util.EventListener;
-import java.util.Random;
-import java.util.jar.JarEntry;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
 import com.toedter.calendar.JDateChooser;
-import java.text.AttributedString;
 
 public class SignupTow extends JFrame implements ActionListener{
 
@@ -30,49 +25,53 @@ public class SignupTow extends JFrame implements ActionListener{
      JRadioButton male, female, married, Unmarried, Others;
      JDateChooser dateChooser;
      JButton Signup_Registration_Button; 
-
+     JComboBox religion_combo, category_combo;
      SignupTow(){
 
         setLayout(null);
+        setTitle("Additional Informantion");
 
-// APPLICATION FORM
+// APPLICATION FORM Second Page
+
         JLabel FormName = new JLabel("APPLICATION FORM PAGE - 2");
         FormName.setFont(new Font("Raleway", Font.BOLD, 25));
         FormName.setBounds(70, 0, 400, 100);;
         add(FormName);
 
-        JLabel pageType = new JLabel("Additional Information");
-        pageType.setFont(new Font("Raleway", Font.BOLD, 18));
-        pageType.setBounds(50, 50, 400, 100);
-        add(pageType);
+        JLabel additionalDetails = new JLabel("Additional Information");
+        additionalDetails.setFont(new Font("Raleway", Font.BOLD, 18));
+        additionalDetails.setBounds(50, 50, 400, 100);
+        add(additionalDetails);
 
         
 
 
-// Name
-        JLabel Name = new JLabel("Name: ");
-        Name.setBounds(50, 130, 150, 20);
-        Name.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Name);
+// Religion
+        JLabel religion_name = new JLabel("Religion: ");
+        religion_name.setBounds(50, 130, 150, 20);
+        religion_name.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(religion_name);
 
-        Name_Field = new JTextField();
-        Name_Field.setBounds(200, 130, 150, 20);
-        Name_Field.setBackground(Color.white);
-        add(Name_Field);
+        String religion_Values[] = {"Muslim", "Hindu", "Christan", "Others"};
+        religion_combo = new JComboBox<>(religion_Values);
+        religion_combo.setBounds(200, 130, 150, 20);
+        religion_combo.setBackground(Color.WHITE);
+        add(religion_combo);
 
-// Fathers Name
-        JLabel Fathers_Name = new JLabel("Fathers's Name: ");
+// Category
+        JLabel Fathers_Name = new JLabel("Category: ");
         Fathers_Name.setBounds(50, 180, 150, 20);
         Fathers_Name.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Fathers_Name);
 
-        Fathers_Name_Field = new JTextField();
-        Fathers_Name_Field.setBounds(200, 180, 150, 20);
-        Fathers_Name_Field.setBackground(Color.white);
-        add(Fathers_Name_Field);
+        String category_value[] = {"General", "OBC", "SC", "ST", "Others"};
+        category_combo = new JComboBox<>(category_value);
+        category_combo.setBounds(200, 180, 150, 20);
+        category_combo.setBackground(Color.white);
+        add(category_combo);
 
-// Date of Birth
-        JLabel Date_of_Birth = new JLabel("Date of Birth: ");
+// Income
+        JLabel Date_of_Birth = new JLabel("Income: ");
         Date_of_Birth.setBounds(50, 230, 150, 20);
         Date_of_Birth.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Date_of_Birth);
@@ -85,7 +84,7 @@ public class SignupTow extends JFrame implements ActionListener{
    
 
 // Gender
-        JLabel Gender = new JLabel("Gender: ");
+        JLabel Gender = new JLabel("Last Education ");
         Gender.setBounds(50, 280, 150, 20);
         Gender.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Gender);
@@ -107,7 +106,7 @@ public class SignupTow extends JFrame implements ActionListener{
         
 
 // Email        
-        JLabel Email = new JLabel("Email: ");
+        JLabel Email = new JLabel("Qualification: ");
         Email.setBounds(50, 330, 150, 20);
         Email.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Email);
@@ -118,7 +117,7 @@ public class SignupTow extends JFrame implements ActionListener{
         add(Email_Field);        
 
 // Marital Status
-        JLabel Marital_Status = new JLabel("Marital Status : ");
+        JLabel Marital_Status = new JLabel("Occupation: ");
         Marital_Status.setBounds(50, 380, 150, 20);
         Marital_Status.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Marital_Status);
@@ -134,7 +133,7 @@ public class SignupTow extends JFrame implements ActionListener{
         Unmarried.setBackground(Color.white);
         add(Unmarried);
         
-        Others = new JRadioButton("Others");
+        Others = new JRadioButton("Others: ");
         Others.setBounds(400, 380, 100, 20);
         Others.setBackground(Color.white);
         add(Others);
@@ -146,7 +145,7 @@ public class SignupTow extends JFrame implements ActionListener{
 
 
 // Address
-        JLabel Address = new JLabel("Address : ");
+        JLabel Address = new JLabel("PAN Number: ");
         Address.setBounds(50, 430, 150, 20);
         Address.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Address);
@@ -158,7 +157,7 @@ public class SignupTow extends JFrame implements ActionListener{
 
 
 // City
-        JLabel City = new JLabel("City : ");
+        JLabel City = new JLabel("Aadhar Number: ");
         City.setBounds(50, 480, 150, 20);
         City.setFont(new Font("Raleway", Font.BOLD, 15));
         add(City);
@@ -169,7 +168,7 @@ public class SignupTow extends JFrame implements ActionListener{
         add(City_Field);  
 
 // State
-        JLabel State = new JLabel("State : ");
+        JLabel State = new JLabel("Senior Citizen: ");
         State.setBounds(50, 530, 150, 20);
         State.setFont(new Font("Raleway", Font.BOLD, 15));
         add(State);
@@ -180,7 +179,7 @@ public class SignupTow extends JFrame implements ActionListener{
         add(State_Field);
 
 // Pin Code
-        JLabel Pin_Code = new JLabel("Pin Code : ");
+        JLabel Pin_Code = new JLabel("Existing Account: ");
         Pin_Code.setBounds(50, 580, 150, 20);
         Pin_Code.setFont(new Font("Raleway", Font.BOLD, 15));
         add(Pin_Code);
@@ -253,12 +252,11 @@ public class SignupTow extends JFrame implements ActionListener{
                                 Connetctiondb c = new Connetctiondb();
                                 String query = "insert into signup values('"+name+"', '"+fathers_name+"', '"+date_of_birth+"', '"+gender+"', '"+emial+"', '"+marid_Status+"', '"+address+"', '"+city+"', '"+pin+"', '"+state+"')";
                                 c.s.executeUpdate(query);
-                                setVisible(false);
-                                new SignupTow().setVisible(true);
+
                         }
                         
-                } catch (Exception ee) {
-                        System.out.println("Error in Database: " + ee);
+                } catch (Exception eee) {
+                        System.out.println("Error in Database: " + eee);
                 }
 
 
