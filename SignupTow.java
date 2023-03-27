@@ -19,13 +19,13 @@ import com.toedter.calendar.JDateChooser;
 public class SignupTow extends JFrame implements ActionListener{
 
      long randomNumber;
-     JTextField Name_Field, Fathers_Name_Field, Email_Field, Address_Field, City_Field, State_Field, Pin_Code_Field;
+     JTextField Pan_Number_Field, AdharNumber_Field;
 
 
      JRadioButton Senior_Citizen_yes, Senior_Citizen_no, Existing_Account_yes, Existing_Account_no;
      JDateChooser dateChooser;
      JButton Signup_Registration_Button;
-ButtonGroup Existing_Account_Group;
+     ButtonGroup Existing_Account_Group;
      JComboBox religion_combo, category_combo, Income_combo, Education_combo, Occupation_combo;
      SignupTow(){
 
@@ -135,28 +135,28 @@ ButtonGroup Existing_Account_Group;
         
 
 
-// Address
-        JLabel Address = new JLabel("PAN Number: ");
-        Address.setBounds(50, 430, 150, 20);
-        Address.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Address);
+// PAN Number Field
+        JLabel PanNumber_Text = new JLabel("PAN Number: ");
+        PanNumber_Text.setBounds(50, 430, 150, 20);
+        PanNumber_Text.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(PanNumber_Text);
         
-        Address_Field = new JTextField();
-        Address_Field.setBounds(200, 430, 300, 30);
-        Address_Field.setBackground(Color.white);
-        add(Address_Field);  
+        Pan_Number_Field = new JTextField();
+        Pan_Number_Field.setBounds(200, 430, 300, 30);
+        Pan_Number_Field.setBackground(Color.white);
+        add(Pan_Number_Field);  
 
 
-// City
-        JLabel City = new JLabel("Aadhar Number: ");
-        City.setBounds(50, 480, 150, 20);
-        City.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(City);
+// Aadhar Number
+        JLabel AdharNumber_Text = new JLabel("Aadhar Number: ");
+        AdharNumber_Text.setBounds(50, 480, 150, 20);
+        AdharNumber_Text.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(AdharNumber_Text);
         
-        City_Field = new JTextField();
-        City_Field.setBounds(200, 480, 150, 20);
-        City_Field.setBackground(Color.white);
-        add(City_Field);  
+        AdharNumber_Field = new JTextField();
+        AdharNumber_Field.setBounds(200, 480, 150, 20);
+        AdharNumber_Field.setBackground(Color.white);
+        add(AdharNumber_Field);  
 
 // Existing_Account
         JLabel Existing_Account = new JLabel("Existing Account: ");
@@ -213,9 +213,11 @@ ButtonGroup Existing_Account_Group;
         public void actionPerformed(ActionEvent e){
 
                 String Religion = (String) religion_combo.getSelectedItem();
-                String category = (String) category_combo.getSelectedItem();
-                String date_of_birth = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
-
+                String Category = (String) category_combo.getSelectedItem();
+                String Income = (String) Income_combo.getSelectedItem();
+                String education = (String) Education_combo.getSelectedItem();
+                
+ 
                 String Senior_Citizen_valu = null;
 
                 if (Senior_Citizen_yes.isSelected()){
@@ -226,7 +228,8 @@ ButtonGroup Existing_Account_Group;
                 }
 
 
-                String emial = Email_Field.getText();
+                String PAN_Number = Pan_Number_Field.getText();
+                String Aadhar_Number = AdharNumber_Field.getText();
 
                 String Existing_Account_value = null;
 
@@ -238,10 +241,6 @@ ButtonGroup Existing_Account_Group;
                 }
     
 
-                String address = Address_Field.getText();
-                String city = City_Field.getText();
-                String state = State_Field.getText();
-                String pin = Pin_Code_Field.getText();
 
                 try {
                         if (name.equals("")){
