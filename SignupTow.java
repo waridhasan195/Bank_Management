@@ -252,7 +252,9 @@ public class SignupTow extends JFrame implements ActionListener{
                         String query = "insert into signuptow values('"+formNumber2+"', '"+Religion+"', '"+Category+"', '"+Income+"', '"+education+"', '"+Occupation+"', '"+PAN_Number+"', '"+Aadhar_Number+"', '"+Senior_Citizen+"', '"+Existing_Account+"')";
                         c.s.executeUpdate(query);
                         setVisible(false);
-                        JOptionPane.showMessageDialog(null, "SignUP Complete.");
+
+                        JOptionPane.showMessageDialog(null, "SignUP Two Complete.");
+                        new SignupThree(formNumber2).setVisible(true);
 
                 } catch (Exception eee) {
                         System.out.println("Error in Database: " + eee);
