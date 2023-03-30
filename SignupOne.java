@@ -24,6 +24,7 @@ import java.text.AttributedString;
 public class SignupOne extends JFrame implements ActionListener{
 
      long randomNumber;
+     String formNumber2;
      JTextField Name_Field, Fathers_Name_Field, Email_Field, Address_Field, City_Field, State_Field, Pin_Code_Field;
 
 
@@ -49,7 +50,10 @@ public class SignupOne extends JFrame implements ActionListener{
 // Serial Number
         Random randomFormNumber = new Random();
         randomNumber = Math.abs((randomFormNumber.nextLong() % 9000L) + 1000L);
-        System.out.println("randomNumber: "+randomNumber);
+        String formNumber2 = ""+randomNumber;
+        
+        System.out.println("randomNumber: "+formNumber2);
+        System.out.println(formNumber2.getClass().getSimpleName());
 
         JLabel Form_No = new JLabel("Serial Number: " + randomNumber);
         Form_No.setBounds(500, 80, 200, 30);
@@ -264,7 +268,7 @@ public class SignupOne extends JFrame implements ActionListener{
                                 String query = "insert into signup values('"+formNumber+"', '"+name+"', '"+fathers_name+"', '"+date_of_birth+"', '"+gender+"', '"+emial+"', '"+marid_Status+"', '"+address+"', '"+city+"', '"+pin+"', '"+state+"')";
                                 c.s.executeUpdate(query);
                                 setVisible(false);
-                                new SignupTow().setVisible(true);
+                                new SignupTow(formNumber2).setVisible(true);
                         }
                         
                 } catch (Exception ee) {

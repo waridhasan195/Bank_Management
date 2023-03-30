@@ -18,7 +18,7 @@ import com.toedter.calendar.JDateChooser;
 
 public class SignupTow extends JFrame implements ActionListener{
 
-     long randomNumber;
+     String formNumber2;
      JTextField Pan_Number_Field, AdharNumber_Field;
 
 
@@ -27,7 +27,10 @@ public class SignupTow extends JFrame implements ActionListener{
      JButton Signup_Registration_Button;
      ButtonGroup Existing_Account_Group;
      JComboBox religion_combo, category_combo, Income_combo, Education_combo, Occupation_combo;
-     SignupTow(){
+
+
+     SignupTow(String formNumber2){
+        this.formNumber2 = formNumber2;
 
         setLayout(null);
         setTitle("Additional Informantion");
@@ -100,10 +103,10 @@ public class SignupTow extends JFrame implements ActionListener{
 
 
 // Occupation        
-        JLabel Occupation = new JLabel("Occupation: ");
-        Occupation.setBounds(50, 330, 150, 20);
-        Occupation.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Occupation);
+        JLabel Occupation_Text = new JLabel("Occupation: ");
+        Occupation_Text.setBounds(50, 330, 150, 20);
+        Occupation_Text.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Occupation_Text);
         
         String Occupation_Value[] = {"Soldier", "Self Employed", "Bussiness", "Student", "Retired", "Others"};
         Occupation_combo = new JComboBox<>(Occupation_Value);
@@ -111,11 +114,11 @@ public class SignupTow extends JFrame implements ActionListener{
         Occupation_combo.setBackground(Color.white);
         add(Occupation_combo);        
 
-// Marital Status
-        JLabel Senior_Citizen = new JLabel("Senior Citizen: ");
-        Senior_Citizen.setBounds(50, 380, 150, 20);
-        Senior_Citizen.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Senior_Citizen);
+// Senior Citizen
+        JLabel Senior_Citizen_Text = new JLabel("Senior Citizen: ");
+        Senior_Citizen_Text.setBounds(50, 380, 150, 20);
+        Senior_Citizen_Text.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Senior_Citizen_Text);
 
 
         Senior_Citizen_yes = new JRadioButton("Yes");
@@ -159,10 +162,10 @@ public class SignupTow extends JFrame implements ActionListener{
         add(AdharNumber_Field);  
 
 // Existing_Account
-        JLabel Existing_Account = new JLabel("Existing Account: ");
-        Existing_Account.setBounds(50, 530, 150, 20);
-        Existing_Account.setFont(new Font("Raleway", Font.BOLD, 15));
-        add(Existing_Account);
+        JLabel Existing_Account_Text = new JLabel("Existing Account: ");
+        Existing_Account_Text.setBounds(50, 530, 150, 20);
+        Existing_Account_Text.setFont(new Font("Raleway", Font.BOLD, 15));
+        add(Existing_Account_Text);
         
         Existing_Account_yes = new JRadioButton("Yes");
         Existing_Account_yes.setBounds(200, 530, 50, 20);
@@ -216,43 +219,41 @@ public class SignupTow extends JFrame implements ActionListener{
                 String Category = (String) category_combo.getSelectedItem();
                 String Income = (String) Income_combo.getSelectedItem();
                 String education = (String) Education_combo.getSelectedItem();
+                String Occupation = (String) Occupation_combo.getSelectedItem();
                 
  
-                String Senior_Citizen_valu = null;
+                String Senior_Citizen = null;
 
                 if (Senior_Citizen_yes.isSelected()){
-                        Senior_Citizen_valu = "Yes";
+                        Senior_Citizen = "Yes";
                 }
                 else if (Senior_Citizen_no.isSelected()){
-                        Senior_Citizen_valu = "No";
+                        Senior_Citizen = "No";
                 }
 
 
                 String PAN_Number = Pan_Number_Field.getText();
                 String Aadhar_Number = AdharNumber_Field.getText();
 
-                String Existing_Account_value = null;
+                String Existing_Account = null;
 
                 if (Existing_Account_yes.isSelected()){
-                        Existing_Account_value = "Yes";
+                        Existing_Account = "Yes";
                 }
                 else if (Existing_Account_no.isSelected()){
-                        Existing_Account_value = "No";
+                        Existing_Account = "No";
                 }
     
 
 
                 try {
-                        if (name.equals("")){
-                                JOptionPane.showMessageDialog(null, "Name Must Requred");
-                        }
-                        else{
-                                Connetctiondb c = new Connetctiondb();
-                                String query = "insert into signup values('"+name+"', '"+fathers_name+"', '"+date_of_birth+"', '"+gender+"', '"+emial+"', '"+marid_Status+"', '"+address+"', '"+city+"', '"+pin+"', '"+state+"')";
-                                c.s.executeUpdate(query);
 
-                        }
-                        
+                        Connetctiondb c = new Connetctiondb();
+                        String query = "insert into signuptow values('"+formNumber2+"', '"+Religion+"', '"+Category+"', '"+Income+"', '"+education+"', '"+Occupation+"', '"+PAN_Number+"', '"+Aadhar_Number+"', '"+Senior_Citizen+"', '"+Existing_Account+"')";
+                        c.s.executeUpdate(query);
+                        setVisible(false);
+                        JOptionPane.showMessageDialog(null, "SignUP Complete.");
+
                 } catch (Exception eee) {
                         System.out.println("Error in Database: " + eee);
                 }
@@ -266,7 +267,7 @@ public class SignupTow extends JFrame implements ActionListener{
 
 
     public static void main(String[] args) {
-        new SignupTow();
+        new SignupTow("");
     }
     
 }
