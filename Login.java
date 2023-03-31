@@ -4,11 +4,13 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -83,16 +85,35 @@ public class Login extends JFrame implements ActionListener{
  
     }
 
-    public void actionPerformed(ActionEvent e){
-        if (e.getSource() == ClearButton){
+    public void actionPerformed(ActionEvent e_login_Page){
+        if (e_login_Page.getSource() == ClearButton){
             cardTextField.setText(null);
             pinTextField.setText(null);
 
         }
-        else if(e.getSource() == SignInButton){
+        else if(e_login_Page.getSource() == SignInButton){
+            String Card_Number = cardTextField.getText();
+            String PIN_Number = pinTextField.getText();
+            Connetctiondb c = new Connetctiondb();
+            String query = "Select * from login where cardNumber = '"+Card_Number+"' and pinNumber = '"+PIN_Number+"'";
+
+            try {
+                ResultSet rs = c.s.executeQuery(query);
+                System.out.println(rs);
+                if(rs.next()){
+                    setVisible(false);
+                    new Transactions().setVisible(true);
+                };
+
+
+            } catch (Exception e) {
+
+                System.out.println("Login ERROR");
+                JOptionPane.showMessageDialog(null, "Login ERROR");
+            }
 
         }
-        else if(e.getSource() == SignUPButton){
+        else if(e_login_Page.getSource() == SignUPButton){
             setVisible(false);
             new SignupOne().setVisible(true);
 
