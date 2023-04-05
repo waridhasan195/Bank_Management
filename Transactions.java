@@ -16,8 +16,10 @@ public class Transactions extends JFrame implements ActionListener{
 
     JLabel l1;
     JButton Deposit_Btn,Cash_with_Btn,Fast_cash_Btn,Mini_Stae_Btn,PIN_Cng_Btn,Balane_Enq_Btn,Exit_Btn;
-    
-    Transactions(){
+    String PIN_Number;
+
+    Transactions(String PIN_Number){
+        this.PIN_Number = PIN_Number;
         setLayout(null);
         setTitle("ATM");
 
@@ -108,6 +110,6 @@ public class Transactions extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        new Transactions();
+        new Transactions("");
     }
 }
