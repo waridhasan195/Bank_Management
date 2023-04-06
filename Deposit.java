@@ -67,6 +67,7 @@ public class Deposit extends JFrame implements ActionListener{
 
         Exit_Btn_deposit.addActionListener(this);
         Back_Btn.addActionListener(this);
+        Deposit_btn.addActionListener(this);
 
         setSize(900, 900);
         setLocation(300, 0);
@@ -88,25 +89,24 @@ public class Deposit extends JFrame implements ActionListener{
         else if (ee.getSource() ==  Deposit_btn){
             String amount = Deposit_Field_Area.getText();
             Date date = new Date();
-
-
-            if(amount.equals("")){
-                JOptionPane.showMessageDialog(null, "Enter Your Valid Amount");
-
-            }
-            else{
-                try {
-                    Connetctiondb c = new Connetctiondb();
-                    String query = "insert into bank values ('"+PIN_Number+"', '"+date+"', 'Deposit', '"+amount+"')";
-                    c.s.executeUpdate(query);
-                    setVisible(false);
-                    new Transactions("").setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Deposit Successful." + "\n" + "Amount = " + "amount");
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Deposit Failed. Try Again");
+            System.out.println("Date: " + date);
+            System.out.println("DEPOSIT BUTTON CLICKED");
+                if(amount.equals("")){
+                    JOptionPane.showMessageDialog(null, "Enter Your Valid Amount");
                 }
-                
-            }
+                else{
+                    try {
+                        Connetctiondb c = new Connetctiondb();
+                        String query = "insert into bank values ('"+PIN_Number+"', '"+date+"', 'Deposit', '"+amount+"')";
+                        c.s.executeUpdate(query);
+                        setVisible(false);
+                        new Transactions("").setVisible(true);
+                        JOptionPane.showMessageDialog(null, "Deposit Successful." + "\n" + "Amount = " + "amount");
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Deposit Failed. Try Again");
+                    }
+                    
+                }
         }
 
 
