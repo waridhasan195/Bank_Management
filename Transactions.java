@@ -101,10 +101,12 @@ public class Transactions extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent ee){
         if (ee.getSource() == Exit_Btn){
-            JOptionPane.showMessageDialog(null, "System EXIT");
             System.exit(0);
-
-
+            JOptionPane.showMessageDialog(null, "System EXIT");
+        }
+        else if(ee.getSource() == Deposit_Btn){
+            setVisible(false);
+            new Deposit(PIN_Number).setVisible(true);
         }
 
     }
