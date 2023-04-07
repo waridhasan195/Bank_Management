@@ -108,9 +108,9 @@ public class Transactions extends JFrame implements ActionListener{
             setVisible(false);
             new Deposit(PIN_Number).setVisible(true);
         }
-        else if(ee.getSource() == Cash_with_Btn){
+        else if(ee.getSource() == Fast_cash_Btn){
             setVisible(false);
-            new Withdrawl(PIN_Number).setVisible(true);
+            new FastCash(PIN_Number).setVisible(true);
         }
 
     }
