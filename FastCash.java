@@ -6,12 +6,14 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.xml.crypto.Data;
 
 public class FastCash extends JFrame implements ActionListener{
 
@@ -107,20 +109,39 @@ public class FastCash extends JFrame implements ActionListener{
         else {
 
             try {
-                String amount_btn = ((JButton) ee.getSource()).getText().substring(3);
+                String amount_btn = ((JButton) ee.getSource()).getText().substring(4);
                 Connetctiondb c = new Connetctiondb();
                 String Query = "";
                 ResultSet rs = c.s.executeQuery("SELECT * FROM bank WHERE pin = '"+PIN_Number+"'");
+                int balance = 0;
 
-                
+                while(rs.next()){
+                    if(rs.getString("type").equals("Deposit")){
+                        balance += Integer.parseInt(rs.getString("amount"));
+                    }
+                    else {
+                        balance -= Integer.parseInt(rs.getString("amount"));
+                    }
 
+                }
+
+                if (ee.getSource() !=  Cancel_Btn && balance < Integer.parseInt(amount_btn)){
+                    JOptionPane.showMessageDialog(null, "Invail Transection. Insufficent Balance.");
+                    return;
+                }
+
+                Date date = new Date();
+                String query = "insert into bank values ('"+PIN_Number+"', '"+date+"', 'Withdrawl', '"+amount_btn+"')";
+                c.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null, "Taka" +amount_btn+ " Debited Successfully.");
+
+                setVisible(false);
+                new Transactions(PIN_Number).setVisible(true);
 
             } catch (Exception e) {
                 System.out.println("Fastcash Problem: " + e);
             }
-
         }
-
 
     }
 
