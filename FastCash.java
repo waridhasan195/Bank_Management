@@ -12,13 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class Transactions extends JFrame implements ActionListener{
+public class FastCash extends JFrame implements ActionListener{
 
     JLabel l1;
     JButton Deposit_Btn,Cash_with_Btn,Fast_cash_Btn,Mini_Stae_Btn,PIN_Cng_Btn,Balane_Enq_Btn,Exit_Btn;
     String PIN_Number;
 
-    Transactions(String PIN_Number){
+    FastCash(String PIN_Number){
         this.PIN_Number = PIN_Number;
         setLayout(null);
         setTitle("ATM");
@@ -36,8 +36,8 @@ public class Transactions extends JFrame implements ActionListener{
         l1.setFont(new Font("System", Font.BOLD, 16));
         
        
-        Deposit_Btn = new JButton("DEPOSIT");
-        Cash_with_Btn = new JButton("CASH WITHDRAWL");
+        Deposit_Btn = new JButton("Tk. 500");
+        Cash_with_Btn = new JButton("Tk. 500");
         Fast_cash_Btn = new JButton("FAST CASH");
         Mini_Stae_Btn = new JButton("MINI STATEMENT");
         PIN_Cng_Btn = new JButton("PIN CHANGE");
@@ -116,6 +116,6 @@ public class Transactions extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        new Transactions("");
+        new FastCash("");
     }
 }

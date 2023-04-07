@@ -15,17 +15,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class Deposit extends JFrame implements ActionListener{
+public class Withdrawl extends JFrame implements ActionListener{
 
-    JButton Exit_Btn_deposit, Back_Btn, Deposit_btn;
+    JButton Exit_Btn_Withdrawl, Back_Btn, Withdrawl_btn;
     String PIN_Number;
     JTextField Deposit_Field_Area;
 
 
-    Deposit(String PIN_Number){
-
-        setTitle("Deposit Page");
+    Withdrawl(String PIN_Number){
         this.PIN_Number = PIN_Number;
+        setTitle("Withdrawl Page");
         setLayout(null);
 
         ImageIcon il = new ImageIcon(ClassLoader.getSystemResource("Bank_Management\\src\\icons\\atm.jpg"));
@@ -35,11 +34,12 @@ public class Deposit extends JFrame implements ActionListener{
         image.setBounds(0, 0, 900, 900);
         add(image);
 
-        JLabel Deposit_Text = new JLabel("Enter your Deposit Amount: ");
-        Deposit_Text.setFont(new Font("Raleway", Font.BOLD, 15));
-        Deposit_Text.setForeground(Color.WHITE);
-        Deposit_Text.setBounds(150,350,300,35);
-        image.add(Deposit_Text);
+
+        JLabel Withdrawl_Text = new JLabel("Enter your Withdrawl Amount: ");
+        Withdrawl_Text.setFont(new Font("Raleway", Font.BOLD, 15));
+        Withdrawl_Text.setForeground(Color.WHITE);
+        Withdrawl_Text.setBounds(150,350,300,35);
+        image.add(Withdrawl_Text);
 
 
 
@@ -49,10 +49,10 @@ public class Deposit extends JFrame implements ActionListener{
         Deposit_Field_Area.setBounds(150, 385, 230, 25);
         image.add(Deposit_Field_Area);
 
-        Deposit_btn = new JButton("DEPOSIT");
-        Deposit_btn.setBounds(230,420,140,25);
+        Withdrawl_btn = new JButton("WITHDRAWL");
+        Withdrawl_btn.setBounds(230,420,140,25);
 
-        image.add(Deposit_btn);
+        image.add(Withdrawl_btn);
 
 
         Back_Btn = new JButton("Back");
@@ -60,16 +60,16 @@ public class Deposit extends JFrame implements ActionListener{
         image.add(Back_Btn);
 
 
-        Exit_Btn_deposit = new JButton("Exit");
-        Exit_Btn_deposit.setBounds(370,510,150,35);
-        image.add(Exit_Btn_deposit);
+        Exit_Btn_Withdrawl = new JButton("Exit");
+        Exit_Btn_Withdrawl.setBounds(370,510,150,35);
+        image.add(Exit_Btn_Withdrawl);
 
 
 
 
-        Exit_Btn_deposit.addActionListener(this);
+        Exit_Btn_Withdrawl.addActionListener(this);
         Back_Btn.addActionListener(this);
-        Deposit_btn.addActionListener(this);
+        Withdrawl_btn.addActionListener(this);
 
         setSize(900, 900);
         setLocation(300, 0);
@@ -82,30 +82,30 @@ public class Deposit extends JFrame implements ActionListener{
 
 
     public void actionPerformed(ActionEvent ee){
-        if (ee.getSource() == Exit_Btn_deposit){
+        if (ee.getSource() == Exit_Btn_Withdrawl){
             System.exit(0);
             JOptionPane.showMessageDialog(null, "System EXIT");
         }
 
 
-        else if (ee.getSource() ==  Deposit_btn){
+        else if (ee.getSource() ==  Withdrawl_btn){
             String amount = Deposit_Field_Area.getText();
             Date date = new Date();
             System.out.println("Date: " + date);
-            System.out.println("DEPOSIT BUTTON CLICKED");
+            System.out.println("Withdrawl BUTTON CLICKED");
                 if(amount.equals("")){
                     JOptionPane.showMessageDialog(null, "Enter Your Valid Amount");
                 }
                 else{
                     try {
                         Connetctiondb c = new Connetctiondb();
-                        String query = "insert into bank values ('"+PIN_Number+"', '"+date+"', 'Deposit', '"+amount+"')";
+                        String query = "insert into bank values ('"+PIN_Number+"', '"+date+"', 'Withdrawl', '"+amount+"')";
                         c.s.executeUpdate(query);
                         setVisible(false);
                         new Transactions("").setVisible(true);
-                        JOptionPane.showMessageDialog(null, "Deposit Successful." + "\n" + "Amount = " + amount);
+                        JOptionPane.showMessageDialog(null, "Withdrawl Successful." + "\n" + "Amount = " + amount);
                     } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Deposit Failed. Try Again");
+                        JOptionPane.showMessageDialog(null, "Withdrawl Failed. Try Again");
                     }
                     
                 }
@@ -121,7 +121,7 @@ public class Deposit extends JFrame implements ActionListener{
 
 
     public static void main(String[] args) {
-        new Deposit("");        
+        new Withdrawl("");        
     }
      
 }
