@@ -20,6 +20,7 @@ public class Transactions extends JFrame implements ActionListener{
 
     Transactions(String PIN_Number){
         this.PIN_Number = PIN_Number;
+
         setLayout(null);
         setTitle("ATM");
 
@@ -111,6 +112,11 @@ public class Transactions extends JFrame implements ActionListener{
         else if(ee.getSource() == Fast_cash_Btn){
             setVisible(false);
             new FastCash(PIN_Number).setVisible(true);
+        }
+
+        else if(ee.getSource() == PIN_Cng_Btn){
+            setVisible(false);
+            new PinChange(PIN_Number).setVisible(true);
         }
 
     }
