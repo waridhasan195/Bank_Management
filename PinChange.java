@@ -97,13 +97,14 @@ public class PinChange extends JFrame implements ActionListener{
                         Pass_field_2.setText("");
                     }
 
-                    else if(Pass_1.equals(Pass_2) && Pass_1 != "" && Pass_2 !=""){
+                    else {
+                    // else if(Pass_1.equals(Pass_2) && Pass_1 != "" && Pass_2 !=""){
                         String PIN = Pass_1;
                         System.out.println("PIN: "+ PIN);
                         Connetctiondb c = new Connetctiondb();
-                        String Query_1 = "Update bank set pin = '"+Pass_1+"' where pin = '"+PIN_Number+"'";
-                        String Query_2 = "Update login set pin = '"+Pass_1+"' where pinNumber = '"+PIN_Number+"'";
-                        String Query_3 = "Update signupthree set pin = '"+Pass_1+"' where pinNumber = '"+PIN_Number+"'";
+                        String Query_1 = "Update bank set pin = '"+PIN+"' where pin = '"+PIN_Number+"'";
+                        String Query_2 = "Update login set pinNumber = '"+PIN+"' where pinNumber = '"+PIN_Number+"'";
+                        String Query_3 = "Update signupthree set pinNumber = '"+PIN+"' where pinNumber = '"+PIN_Number+"'";
 
                         c.s.executeUpdate(Query_1);
                         c.s.executeUpdate(Query_2);
